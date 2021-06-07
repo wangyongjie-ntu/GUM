@@ -1,8 +1,3 @@
-#Filename:	brute_force.py
-#Author:	Wang Yongjie
-#Email:		yongjie.wang@ntu.edu.sg
-#Date:		Sen 09 Des 2019 09:01:09  WIB
-
 import numpy as np
 import itertools
 import time

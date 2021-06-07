@@ -1,8 +1,3 @@
-#Filename:	baseline_random.py
-#Author:	Wang Yongjie
-#Email:		yongjie.wang@ntu.edu.sg
-#Date:		Kam 09 Apr 2020 04:19:35  WIB
-
 import numpy as np
 import time
 import random

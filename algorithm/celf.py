@@ -1,8 +1,3 @@
-#Filename:	submodular.py
-#Author:	Wang Yongjie
-#Email:		yongjie.wang@ntu.edu.sg
-#Date:		Sel 17 Des 2019 06:40:47  WIB
-
 import numpy as np
 import itertools
 import time

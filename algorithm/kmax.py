@@ -1,7 +1,3 @@
-#Filename:	kmeans_like.py
-#Author:	Wang Yongjie
-#Email:		yongjie.wang@ntu.edu.sg
-#Date:		Sen 09 Des 2019 10:08:13  WIB
 import numpy as np 
 import random
 import time
@@ -108,4 +104,3 @@ if __name__ == "__main__":
     for i in range(1, 10):
         largest_sum, time_elapsed, _, _, _, _ = multiple_init_kmax(data, 2, i, init_num = 10)
         print("Largest sum\t", np.max(largest_sum))
-# bug appear when T.shape[0] == 1, to fixed

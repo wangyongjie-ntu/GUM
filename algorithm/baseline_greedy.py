@@ -1,8 +1,3 @@
-#Filename:	baseline_greedy.py
-#Author:	Wang Yongjie
-#Email:		yongjie.wang@ntu.edu.sg
-#Date:		Jum 10 Apr 2020 04:46:32  WIB
-
 import numpy as np
 import time
 import random

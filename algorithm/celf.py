@@ -1,3 +1,4 @@
+# Accelerated Greedy algorithm
 import numpy as np
 import itertools
 import time

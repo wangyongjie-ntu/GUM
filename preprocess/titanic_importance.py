@@ -58,52 +58,6 @@ def positive_sample(X, Y):
     X_negative = X[negative]
     return X_positive, X_negative
 
-def train_test(X_train, X_test, Y_train, Y_test):
-
-    # convert numpy array to tensor
-    X_train = torch.from_numpy(X_train).float()
-    X_test = torch.from_numpy(X_test).float()
-    Y_train = torch.from_numpy(Y_train).long()
-    Y_test = torch.from_numpy(Y_test).long()
-    model = torch.nn.Sequential(
-              torch.nn.Linear(X_train.size(1), 20),
-              torch.nn.ReLU(),
-              #torch.nn.Dropout(0.3),
-              torch.nn.Linear(20, 20),
-              torch.nn.ReLU(),
-              #torch.nn.Dropout(0.3),
-              torch.nn.Linear(20, 10),
-              torch.nn.ReLU(),
-              #torch.nn.Dropout(0.3),
-              torch.nn.Linear(10, 2),
-            )
-    loss_fn = torch.nn.CrossEntropyLoss()    
-
-    #optimizer = torch.optim.SGD(model.parameters(), lr = 0.1, momentum = 0.2)
-    optimizer = torch.optim.SGD(model.parameters(), lr = 0.1, weight_decay = 1e-3)
-
-    for t in range(500):
-      # Forward pass: compute predicted y by passing x to the model.
-      y_pred = model(X_train)
-      # Compute and print loss.
-      loss = loss_fn(y_pred, Y_train)
-      print(t, loss.item())
-      optimizer.zero_grad()
-      # Backward pass: compute gradient of the loss with respect to model parameters
-      loss.backward()
-      # Calling the step function on an Optimizer makes an update to its parameters
-      optimizer.step()
-
-    _, y_pred = torch.max(y_pred, 1)
-    print("Train accuracy score", accuracy_score(Y_train, y_pred))
-    print("Train F1 score", f1_score(Y_train, y_pred))
-    output = model(X_test)
-    _, y_pred = torch.max(output, 1)
-    print("Test accuracy score", accuracy_score(Y_test, y_pred))
-    print("Test F1 score", f1_score(Y_test, y_pred))
-
-    return model
-
 def integrated_gradient(model, X, baseline):
     ig = IntegratedGradients(model)
     attr, delta = ig.attribute(X, baseline, target = 1, return_convergence_delta = True)
@@ -113,13 +67,7 @@ def integrated_gradient(model, X, baseline):
 if __name__ == "__main__":
 
     X_train, X_test, Y_train, Y_test, X, Y, attributes, scaler = titanic1("../data/train.csv")
-
-    if True:
-        model = torch.load("titanic_v1.pkl")
-    else:
-        model = train_test(X_train, X_test, Y_train, Y_test)
-        torch.save(model, "titanic_v1.pkl")
-
+    model = torch.load("titanic_v1.pkl")
     X_positive, X_negative = positive_sample(X, Y)
     X_positive = scaler.transform(X_positive)
     X_negative = scaler.transform(X_negative)

@@ -1,8 +1,6 @@
 # GUM
 GUM(Group Utility Maximization) is the official repository for the paper "Summarizing User-Item Matrix By Group Utility Maximization"(in submission). 
 
-
-
 # Requirements
 
 ```python
@@ -20,10 +18,10 @@ The listed four  folders.
 
 # Example
 
-The such code snippet shows how to obtain the group summarization on Titanic dataset. 
+The such code snippet shows how to obtain the group summarization on Titanic dataset. You can reproduce the experiments by replacing the dataset and setting the parameters $k$ and $l$ of our examplar codes.
 
 ```bash
 cd run;
 python titanic_run.py
 ```
-
+# Cite Us
